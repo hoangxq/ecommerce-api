@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="Default">
+      <persistence-unit name="Default" defaultIncludeChangeLogFile="src/main/resources/migration/master-changelog.xml">
         <packages>
           <package value="com.demo.ecommerce_api" />
         </packages>
