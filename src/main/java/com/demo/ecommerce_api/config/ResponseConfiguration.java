@@ -1,7 +1,7 @@
 package com.demo.ecommerce_api.config;
 
 import brave.Tracer;
-import com.demo.ecommerce_api.response.ResponseUtils;
+import com.demo.ecommerce_api.payload.response.utils.ResponseUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 

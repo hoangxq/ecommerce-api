@@ -1,4 +1,4 @@
-package com.demo.ecommerce_api.response;
+package com.demo.ecommerce_api.payload.response.utils;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,7 +14,7 @@ public class ErrorResponse extends Response {
     private final String errKey;
     private final Map<String, Object> params;
 
-    protected ErrorResponse(String errKey, String message, Map<String, Object> params) {
+    public ErrorResponse(String errKey, String message, Map<String, Object> params) {
         this.errKey = errKey;
         this.message = message;
         this.params = params;

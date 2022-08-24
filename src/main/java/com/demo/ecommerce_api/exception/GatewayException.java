@@ -1,6 +1,6 @@
 package com.demo.ecommerce_api.exception;
 
-import com.demo.ecommerce_api.response.ErrorResponse;
+import com.demo.ecommerce_api.payload.response.utils.ErrorResponse;
 import org.springframework.http.HttpStatus;
 
 public class GatewayException extends RuntimeException {

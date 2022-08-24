@@ -18,7 +18,7 @@ public class LocaleConfiguration {
         localeResolver.setSupportedLocales(List.of(
                 Locale.US,
                 Locale.JAPANESE,
-                new Locale("vi")
+                new Locale("vn")
         ));
         localeResolver.setDefaultLocale(Locale.US);
         return localeResolver;

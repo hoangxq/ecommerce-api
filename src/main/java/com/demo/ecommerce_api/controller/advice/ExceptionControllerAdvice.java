@@ -3,9 +3,9 @@ package com.demo.ecommerce_api.controller.advice;
 import com.demo.ecommerce_api.exception.common.BusinessException;
 import com.demo.ecommerce_api.exception.common.ServiceError;
 import com.demo.ecommerce_api.exception.common.SysException;
-import com.demo.ecommerce_api.response.ErrorResponse;
-import com.demo.ecommerce_api.response.Response;
-import com.demo.ecommerce_api.response.ResponseUtils;
+import com.demo.ecommerce_api.payload.response.utils.ErrorResponse;
+import com.demo.ecommerce_api.payload.response.utils.Response;
+import com.demo.ecommerce_api.payload.response.utils.ResponseUtils;
 import com.demo.ecommerce_api.service.component.I18nMessageHelper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +13,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -101,6 +102,14 @@ public class ExceptionControllerAdvice {
                 ErrorResponse.of(e.getErr().getMessageKey(), errMsg, e.getParams()));
     }
 
+    @ExceptionHandler({UsernameNotFoundException.class})
+    public ResponseEntity<Response> authenticationErrorHandle(UsernameNotFoundException e) {
+        log.error("Authentication Exception", e);
+        String errMsg = messageHelper.getErrorMessage(e.getMessage());
+        return ResponseUtils.internalErr(
+                ErrorResponse.of(ServiceError.UNEXPECTED_EXCEPTION.getMessageKey(), errMsg));
+    }
+
     @ExceptionHandler({Exception.class, SysException.class})
     public ResponseEntity<Response> unknownErrorHandler(Exception e) {
         log.error("Unexpected Exception", e);
@@ -108,5 +117,6 @@ public class ExceptionControllerAdvice {
         return ResponseUtils.internalErr(
                 ErrorResponse.of(ServiceError.UNEXPECTED_EXCEPTION.getMessageKey(), errMsg));
     }
+
 
 }

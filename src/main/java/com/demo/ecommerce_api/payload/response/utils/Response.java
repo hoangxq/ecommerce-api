@@ -1,4 +1,4 @@
-package com.demo.ecommerce_api.response;
+package com.demo.ecommerce_api.payload.response.utils;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -1,4 +1,4 @@
-package com.demo.ecommerce_api.response;
+package com.demo.ecommerce_api.payload.response.utils;
 
 import brave.Tracer;
 import lombok.experimental.UtilityClass;
