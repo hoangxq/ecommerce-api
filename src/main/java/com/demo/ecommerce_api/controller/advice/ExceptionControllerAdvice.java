@@ -13,6 +13,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
@@ -64,12 +65,12 @@ public class ExceptionControllerAdvice {
                 ErrorResponse.of(ServiceError.CMN_INVALID_PARAM.getMessageKey(), errMsg + ": " + sb.toString()));
     }
 
-//    @ExceptionHandler({AccessDeniedException.class})
-//    public ResponseEntity<Response> accessDeniedErrorHandler(AccessDeniedException e) {
-//        log.error("access denied", e);
-//        String errMsg = messageHelper.getErrorMessage(ServiceError.CMN_ACCESS_DENIED.getMessageKey());
-//        return ResponseUtils.unauthorized(ErrorResponse.of(ServiceError.CMN_ACCESS_DENIED.getMessageKey(), errMsg));
-//    }
+    @ExceptionHandler({AccessDeniedException.class})
+    public ResponseEntity<Response> accessDeniedErrorHandler(AccessDeniedException e) {
+        log.error("access denied", e);
+        String errMsg = messageHelper.getErrorMessage(ServiceError.CMN_ACCESS_DENIED.getMessageKey());
+        return ResponseUtils.unauthorized(ErrorResponse.of(ServiceError.CMN_ACCESS_DENIED.getMessageKey(), errMsg));
+    }
 
 
     @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
