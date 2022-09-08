@@ -13,7 +13,7 @@ import java.util.Objects;
 @Data
 
 @Entity
-@Table(name = "authority")
+@Table(name = "authority", schema = "public")
 public class Authority implements Serializable {
 
     @NotNull

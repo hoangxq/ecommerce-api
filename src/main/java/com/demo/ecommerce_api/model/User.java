@@ -18,7 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", schema = "public")
 public class User extends AbstractModel implements Serializable {
 	
 	@Id
