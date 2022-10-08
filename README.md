@@ -1,2 +1,2 @@
 # ecommerce-api
-Base RestFul api for ecommerce site using Spring boot
+Based RestFul api for ecommerce site using Spring boot
